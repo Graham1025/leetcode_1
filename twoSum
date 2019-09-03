@@ -1,0 +1,35 @@
+#include<stdio.h>
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+     int i,j;
+    for(i=0;i<numsSize;i++)
+        for(j=i+1;j<=numsSize;j++)
+            if(*(nums+i)+*(nums+j) == target)
+            {
+                printf("return [%d, %d]\n", *(nums+i), *(nums+i));
+                break;
+            }
+            else if (i==numsSize && j==numsSize ) 
+                printf("no return");
+    return NULL;
+}
+
+int main()
+{
+    int numsSize1,target1,k;
+    int* nums1;
+    int* returnSize1;
+    printf("输入numsSize，target的值:/n");
+    scanf("%d", &numsSize1);
+    scanf("%d", &target1);
+    nums1 = (int*)malloc(numsSize1);
+    printf("输入nums数组：/n");
+    for(k = 0;k<numsSize1;k++)
+    scanf("%d",*(nums1+k));
+    twoSum(nums1, numsSize1, target1, returnSize1); 
+    free(nums1);
+    return 0;
+}
