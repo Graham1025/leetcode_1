@@ -1,35 +1,49 @@
 #include<stdio.h>
+#include<stdlib.h>
+#pragma warning(disable:4996)
+#define FILE_BUFFER_LENGTH 30000
 
 /**
- * Note: The returned array must be malloced, assume caller calls free().
- */
+* Note: The returned array must be malloced, assume caller calls free().
+*/
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
-     int i,j;
-    for(i=0;i<numsSize;i++)
-        for(j=i+1;j<=numsSize;j++)
-            if(*(nums+i)+*(nums+j) == target)
-            {
-                printf("return [%d, %d]\n", *(nums+i), *(nums+i));
-                break;
-            }
-            else if (i==numsSize && j==numsSize ) 
-                printf("no return");
-    return NULL;
+	int i, j;
+	for (i = 0; i<numsSize; i++)
+		for (j = i + 1; j < numsSize; j++)
+			if (*(nums + i) + *(nums + j) == target)
+			{   
+				*returnSize = *(nums + i);
+				*(returnSize+1) = *(nums + j);
+				printf("return [%d, %d]\n", *returnSize, *(returnSize + 1));
+				return NULL;
+			}
+			else if (i == numsSize && j == numsSize)
+				printf("no return");
+	return NULL;
 }
 
 int main()
 {
-    int numsSize1,target1,k;
-    int* nums1;
-    int* returnSize1;
-    printf("输入numsSize，target的值:/n");
-    scanf("%d", &numsSize1);
-    scanf("%d", &target1);
-    nums1 = (int*)malloc(numsSize1);
-    printf("输入nums数组：/n");
-    for(k = 0;k<numsSize1;k++)
-    scanf("%d",*(nums1+k));
-    twoSum(nums1, numsSize1, target1, returnSize1); 
-    free(nums1);
-    return 0;
+	int numsSize1, target1, k;
+	int* nums1;
+	int* returnSize1;
+	int a[2] = { 0, 0 };
+		returnSize1 = a;
+	printf("输入numsSize的值:\n");
+	scanf("%d", &numsSize1);
+	getchar();
+	printf("输入target的值:\n");
+	scanf("%d", &target1);
+	getchar();
+	nums1 = (int*)malloc(numsSize1);
+	printf("输入nums数组：\n");
+	for (k = 0; k < numsSize1; k++)
+	{
+		scanf("%d", (nums1 + k));
+		getchar();
+	}
+	twoSum(nums1, numsSize1, target1, returnSize1);
+	free(nums1);
+	getchar();
+	return 0;
 }
