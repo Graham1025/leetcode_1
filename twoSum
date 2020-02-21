@@ -47,3 +47,5 @@ int main()
 	getchar();
 	return 0;
 }
+
+Matching for navigation map building for automated guided robot based on laser navigation without a reflector
