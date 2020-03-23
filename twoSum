@@ -1,25 +1,25 @@
 #include<stdio.h>
 #include<stdlib.h>
 #pragma warning(disable:4996)
-#define FILE_BUFFER_LENGTH 30000
 
 /**
 * Note: The returned array must be malloced, assume caller calls free().
 */
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
-	int i, j;
+    int i, j;
+    int* result=NULL;
 	for (i = 0; i<numsSize; i++)
 		for (j = i + 1; j < numsSize; j++)
 			if (*(nums + i) + *(nums + j) == target)
 			{   
-				*returnSize = *(nums + i);
-				*(returnSize+1) = *(nums + j);
-				printf("return [%d, %d]\n", *returnSize, *(returnSize + 1));
-				return NULL;
+				result=(int*)malloc(2*sizeof(int));
+                                result[0] = i;
+		                result[1] = j;
+                                *returnSize=2;
+		                return result;
 			}
-			else if (i == numsSize && j == numsSize)
-				printf("no return");
-	return NULL;
+	*returnSize=0;
+	return result;
 }
 
 int main()
