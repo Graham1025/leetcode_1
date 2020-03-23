@@ -6,44 +6,47 @@
 * Note: The returned array must be malloced, assume caller calls free().
 */
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
-    int i, j;
-    int* result=NULL;
-	for (i = 0; i<numsSize; i++)
+	int i, j;
+	int* result = NULL;
+	for (i = 0; i < numsSize; i++)
 		for (j = i + 1; j < numsSize; j++)
 			if (*(nums + i) + *(nums + j) == target)
-			{   
-				result=(int*)malloc(2*sizeof(int));
-                                result[0] = i;
-		                result[1] = j;
-                                *returnSize=2;
-		                return result;
+			{
+				result = (int*)malloc(2 * sizeof(int));
+				result[0] = i;
+				result[1] = j;
+				*returnSize = 2;
+				return result;
 			}
-	*returnSize=0;
+	*returnSize = 0;
 	return result;
 }
 
 int main()
 {
-	int numsSize1, target1, k;
+	int numsSize1, target1, k, returnSize1 = 0;
 	int* nums1;
-	int* returnSize1;
-	int a[2] = { 0, 0 };
-		returnSize1 = a;
-	printf("输入numsSize的值:\n");
+	int* result = NULL;
+	printf("输入numsSize1的值:");
 	scanf("%d", &numsSize1);
 	getchar();
-	printf("输入target的值:\n");
+	printf("输入target的值:");
 	scanf("%d", &target1);
 	getchar();
-	nums1 = (int*)malloc(numsSize1);
-	printf("输入nums数组：\n");
+	nums1 = (int*)malloc(numsSize1*sizeof(int));
+	printf("输入nums数组：");
 	for (k = 0; k < numsSize1; k++)
 	{
 		scanf("%d", (nums1 + k));
 		getchar();
 	}
-	twoSum(nums1, numsSize1, target1, returnSize1);
-	free(nums1);
+	result = twoSum(nums1, numsSize1, target1, &returnSize1);
+	if (result)
+	{
+		for (k = 0; k < returnSize1; k++)
+			printf("%d ", result[k]);
+		free(result);
+	}
 	getchar();
 	return 0;
 }
