@@ -24,31 +24,29 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize){
 
 int main()
 {
-	int numsSize1, target1, k, returnSize1 = 0;
-	int* nums1;
-	int* result = NULL;
-	printf("输入numsSize1的值:");
-	scanf("%d", &numsSize1);
-	getchar();
+	int numsSize = 0, target = 0, k = 0, returnSize = 0;
+	int *nums = NULL, *result = NULL;
+	printf("输入numsSize的值:");
+	scanf("%d", &numsSize);
+	//getchar();
 	printf("输入target的值:");
-	scanf("%d", &target1);
-	getchar();
-	nums1 = (int*)malloc(numsSize1*sizeof(int));
+	scanf("%d", &target);
+	//getchar();
+	nums = (int*)malloc(numsSize*sizeof(int));
 	printf("输入nums数组：");
-	for (k = 0; k < numsSize1; k++)
+	for (k = 0; k < numsSize; k++)
 	{
-		scanf("%d", (nums1 + k));
+		scanf("%d", (nums + k));
 		getchar();
 	}
-	result = twoSum(nums1, numsSize1, target1, &returnSize1);
+	result = twoSum(nums, numsSize, target, &returnSize);
 	if (result)
 	{
-		for (k = 0; k < returnSize1; k++)
+		for (k = 0; k < returnSize; k++)
 			printf("%d ", result[k]);
 		free(result);
 	}
 	getchar();
 	return 0;
 }
-
 Matching for navigation map building for automated guided robot based on laser navigation without a reflector
